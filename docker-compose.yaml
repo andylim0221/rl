@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    working_dir: /code/app
+    ports:
+      - "80:80"
+    volumes:
+      - .:/code/app
+    restart: on-failure
+  redis:
+    image: "redis:alpine"
+    restart: always
+    volumes:
+    - redis_data:/data
+
+volumes:
+  redis_data:
